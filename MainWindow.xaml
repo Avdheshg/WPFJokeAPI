@@ -1,0 +1,197 @@
+﻿<Window x:Class="WPFJokeAPL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFJokeAPL"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1000">
+    <!-- Main Grid-->
+    <Grid Margin="10" Background="Aqua">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <!-- Category -->
+        <Grid Margin="10" Background="Beige" Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Margin="10">Select Category/Categories</TextBlock>
+            
+            <!-- Any -->
+            <Grid Margin="10" Background="Aquamarine" Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <RadioButton Content="Any" GroupName="RadioCategories"></RadioButton>
+            </Grid>
+            <!-- Custom Types-->
+            <Grid Margin="10" Background="Aquamarine" Grid.Row="1" Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Right Column-->
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <RadioButton x:Name="customRadioButton" GroupName="RadioCategories" Content="Custom" Grid.Row="0" Grid.Column="0"/>
+                    
+                    <!-- Radio Button Checked : Custom Categoriy Types -->
+                    <Grid Background="Chocolate" Grid.Row="0" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <CheckBox Content="Programming" IsEnabled="{Binding IsChecked, ElementName=customRadioButton}" Grid.Row="0" Grid.Column="0"/>
+                        <CheckBox Content="Misc" IsEnabled="{Binding IsChecked, ElementName=customRadioButton}" Grid.Row="0" Grid.Column="1"/>
+                        <CheckBox Content="Dark" IsEnabled="{Binding IsChecked, ElementName=customRadioButton}" Grid.Row="0" Grid.Column="2"/>
+                        <CheckBox Content="Pun" IsEnabled="{Binding IsChecked, ElementName=customRadioButton}" Grid.Row="0" Grid.Column="3"/>
+                        <CheckBox Content="Spooky" IsEnabled="{Binding IsChecked, ElementName=customRadioButton}" Grid.Row="0" Grid.Column="4"/>
+                        <CheckBox Content="Christmas" IsEnabled="{Binding IsChecked, ElementName=customRadioButton}" Grid.Row="0" Grid.Column="5"/>
+
+                    </Grid>
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+
+            <!-- Language -->
+        <Grid Margin="10" Background="Azure" Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock>Select Language: </TextBlock>
+            
+            <!-- Dropdown: Language -->
+            <ComboBox SelectedIndex="2" Grid.Row="0" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"> 
+                <ComboBoxItem Content="cs-Czech"/>
+                <ComboBoxItem Content="de-German"/>
+                <ComboBoxItem Content="en-English"/>
+                <ComboBoxItem Content="es-Spanish"/>
+                <ComboBoxItem Content="fr-french"/>
+                <ComboBoxItem Content="pt-Portuguese"/>
+            </ComboBox>
+            
+        </Grid>
+        
+        <!-- Blacklist Flags-->
+        <Grid Margin="10" Background="Azure" Grid.Row="2" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock>Select flags to blacklist:</TextBlock>
+            
+            <!-- Balcklist : Checkboxes -->
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0">(optional)</TextBlock>
+                
+                <!-- Defining Checkboxes -->
+                <CheckBox Content="nsfw" Grid.Row="0" Grid.Column="1"/>
+                <CheckBox Content="religious" Grid.Row="0" Grid.Column="2"/>
+                <CheckBox Content="political" Grid.Row="0" Grid.Column="3"/>
+                <CheckBox Content="racist" Grid.Row="0" Grid.Column="4"/>
+                <CheckBox Content="sexist" Grid.Row="0" Grid.Column="5"/>
+                <CheckBox Content="explicit" Grid.Row="0" Grid.Column="6"/>
+            </Grid>
+            
+        </Grid>
+        
+        <!-- Joke Type-->
+        <Grid Margin="10" Background="Azure" Grid.Row="3" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0">Select at least one joke type:</TextBlock>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                <CheckBox Content="single"/>
+                <CheckBox Content="two-part"/>
+            </StackPanel>
+        </Grid>
+            
+        <!-- Search String -->
+        <Grid Margin="10" Background="Azure" Grid.Row="4" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0">Search for a joke that
+contains this search string:</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Height="30" Width="Auto" VerticalAlignment="Top"/>
+        </Grid>
+            
+        <!-- Amount of Jokes -->
+        <Grid Margin="10" Background="Azure" Grid.Row="5" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock>Amount of Jokes</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Height="20" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </Grid>
+        
+    </Grid>
+</Window>
